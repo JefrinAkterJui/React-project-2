@@ -58,25 +58,28 @@ const Registar = () => {
                 />
               </div>
               {/* -------------user pass----------- */}
-              <div className='relative'>
-                <p className='text-red-600 text-[15px] font-normal ml-[10px] mb-2'>{error.passwordError}</p>
-                <input
-                  className="outline-none border-2 rounded-md px-2 py-1 text-slate-500 w-full focus:border-blue-300"
-                  placeholder="Password" 
-                  type={show? "text" : "password"}
-                  onChange={(e)=>{setFromdata((go)=>({...go , password:e.target.value})) , setError((hum)=>({...hum ,passwordError:' '}))}}
-                />
-                {
-                  show?
-                  <FaEye onClick={()=>setshow(false)} className=" absolute top-[30%] right-[7px] text-slate-500  cursor-pointer"/>
-                  :
-                  <FaEyeSlash onClick={()=>setshow(true)} className=" absolute top-[30%] right-[7px]  text-slate-500 cursor-pointer" />
+                <div className="div">
 
-                }
+                    <p className='text-red-600 text-[15px] font-normal ml-[10px] mb-2'>{error.passwordError}</p>
+                  <div className='relative'>
+                    <input
+                      className="outline-none border-2 rounded-md px-2 py-1 text-slate-500 w-full focus:border-blue-300"
+                      placeholder="Password" 
+                      type={show? "text" : "password"}
+                      onChange={(e)=>{setFromdata((go)=>({...go , password:e.target.value})) , setError((hum)=>({...hum ,passwordError:' '}))}}
+                      />
+                    {
+                      show?
+                      <FaEye onClick={()=>setshow(false)} className=" absolute top-[30%] right-[7px] text-slate-500  cursor-pointer"/>
+                      :
+                      <FaEyeSlash onClick={()=>setshow(true)} className=" absolute top-[30%] right-[7px]  text-slate-500 cursor-pointer" />
+                  
+                    }
                 
                 
                 
-              </div>
+                  </div>
+                </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   <input
