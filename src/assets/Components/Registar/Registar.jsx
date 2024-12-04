@@ -2,13 +2,22 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa6";
+import { getAuth, createUserWithEmailAndPassword , sendEmailVerification ,updateProfile } from "firebase/auth";
+import 'react-toastify/dist/ReactToastify.css';
+import { Bounce, toast } from 'react-toastify';
+
+
+
 
 
 const Registar = () => {
-
+// -----------------use state part------------------------------
   const [show , setshow] = useState(false)
   const [fromdta , setFromdata] =useState({username:'' , email:'' , password:''})
   const [error , setError] =useState({usernameError:'' , emailError:'' , passwordError:''})
+// -----------------firbase variables-----------------------------
+  const auth = getAuth();
+
 
   const Hregister =()=>{
     if(fromdta.username==""){
@@ -21,6 +30,67 @@ const Registar = () => {
     }
     if(fromdta.password==""){
       setError((hum)=>({...hum ,passwordError:'Enter Your Password '}))
+    }
+    else{
+      createUserWithEmailAndPassword(auth, fromdta.email, fromdta.password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user)
+        // ---------------- add user photo and Nmae---------------
+        updateProfile(auth.currentUser, {
+          displayName:fromdta.username, photoURL: "https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png"
+        }).then(() => {
+            sendEmailVerification(auth.currentUser)
+            .then(() => {
+              toast.info(' Email verification send', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                transition: Bounce,
+                });
+            });
+          })
+        
+          // ---------input field empty------------
+          // setFromdata((hum)=>({...hum ,username:'' , email:'' , password:''}))
+          // ==================email varification----------------
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        if(errorCode=='auth/email-already-in-use'){
+          // -----------error tost------------
+        toast.error(' Email has already taken', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          transition: Bounce,
+          });
+        }
+        if(errorCode=='auth/weak-password'){
+          toast.error(' Week Password', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            transition: Bounce,
+            });
+        }
+      });
     }
   }
 
