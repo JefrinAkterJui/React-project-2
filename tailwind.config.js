@@ -9,6 +9,9 @@ export default {
     container: {
       center: true,
     },
+    fontFamily:{
+      Popins:[ "Poppins", "sans-serif"]
+    }
   },
   plugins: [],
 }

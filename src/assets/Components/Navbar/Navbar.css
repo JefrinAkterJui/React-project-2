@@ -1,0 +1,23 @@
+.Jui-Navbar{
+    @apply py-0 bg-white shadow-[0px_1px_0px_0px_#dadce0] 
+}
+.userData{
+    @apply flex justify-between items-center
+}
+.ProfileData{
+    @apply flex justify-end items-center gap-2
+}
+.userPhoto{
+    @apply w-[40px] h-[40px] bg-[#EBECEC] border-[1px]
+    
+    border-[#d1d1d1] rounded-[50%]
+}
+.userPhoto img{
+    @apply overflow-hidden flex justify-center items-center 
+}
+.ProfileData h1{
+    @apply font-Popins text-[16px] font-medium
+}
+.Licon{
+    @apply text-[20px] text-[#000] cursor-pointer
+}
