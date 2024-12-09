@@ -1,5 +1,6 @@
 .Jui-Navbar{
     @apply py-0 bg-white shadow-[0px_1px_0px_0px_#dadce0] 
+    
 }
 .userData{
     @apply flex justify-between items-center
@@ -8,7 +9,7 @@
     @apply flex justify-end items-center gap-2
 }
 .userPhoto{
-    @apply w-[40px] h-[40px] bg-[#EBECEC] border-[1px]
+    @apply w-[32px] h-[32px] bg-[#EBECEC] border-[1px]
     
     border-[#d1d1d1] rounded-[50%]
 }
@@ -20,4 +21,10 @@
 }
 .Licon{
     @apply text-[20px] text-[#000] cursor-pointer
+}
+.Line{
+    @apply text-[30px]
+}
+.logom{
+    @apply flex gap-[5px] justify-center items-center
 }

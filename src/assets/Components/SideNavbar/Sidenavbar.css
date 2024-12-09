@@ -1,0 +1,22 @@
+.main_nav{
+    @apply w-[284px]  h-screen
+}
+/* .NavOne{
+    @apply  pl-[40px]  
+} */
+.ActivePage{
+    @apply text-black  mt-4 font-Albart dark:text-white
+    text-[16px] font-semibold  flex py-[15px] gap-8 bg-[#FFF9C4] dark:bg-[#41331C]
+    rounded-tr-[50px] rounded-br-[50px] 
+}
+.icon1{
+    @apply text-black  text-[24px] font-semibold ml-[37px] dark:text-white
+}
+.NotActivePage{
+    @apply text-black  mt-4 font-Albart dark:text-white
+    text-[16px] font-semibold  flex py-[15px] gap-8 bg-[#fff] dark:bg-[#202124]
+    rounded-tr-[50px] rounded-br-[50px]
+}
+.b{
+    @apply text-[20px]
+}

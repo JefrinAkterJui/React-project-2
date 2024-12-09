@@ -1,27 +1,44 @@
 import React from 'react'
 import './Navbar.css'
 import { AiOutlineLogout } from "react-icons/ai";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { userData } from '../../../Slice/userSlice';
+import { IoReorderThreeOutline } from "react-icons/io5";
 
 
 const Navbar = () => {
         // -----------------Redux theke data niye aikhane import kortesi------------------------------------------
         const sliceUser = useSelector((state)=>state.User.value)
 
+        // -----------------------Logout variables part----------------------------------------------------------
+        const Navigate =useNavigate()
+        const dispatch=useDispatch()
+        // -------------------logOut onclick---------------------------------------------------------------------
+        const hendelLogOut=()=>{
+            Navigate('/Login')
+            localStorage.removeItem('currentuser')
+            dispatch(userData(null))
+        }
 
 
   return (
     <>
-    <nav className='Jui-Navbar'>
+    <nav className='Jui-Navbar dark:bg-[#202124] dark:shadow-hum'>
         <div className="container">
                 <div className="userData">
-                    <div className="NoteLogo">
-                        <img src="imge/logo.png" alt="imge" />
+                    <div className="logom">
+                        <div className="Three_lines dark:text-white ">
+                            <IoReorderThreeOutline className='Line'/>
+                        </div>
+                        <div className="NoteLogo">
+                            <img src="imge/logo.png" alt="imge" />
+                        </div>
                     </div>
                     <div className="ProfileData">
-                        <div className="userPhoto overflow-hidden"><img src={sliceUser?.photoURL} alt="" /></div>
-                        <h1>{sliceUser?.displayName}</h1>
-                        <AiOutlineLogout className='Licon' />
+                        <h1 className=' dark:text-white'>{sliceUser?.displayName}</h1>
+                        <div className="userPhoto overflow-hidden"><img src={sliceUser?.photoURL} alt="profile" /></div>
+                        <AiOutlineLogout onClick={hendelLogOut} className='Licon dark:text-white' />
                     </div>
                 </div>
         </div>

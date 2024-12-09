@@ -7,6 +7,8 @@ import { ToastContainer } from 'react-toastify'
 import Login from './assets/Components/Login/Login'
 import LayoutsOne from './Layouts/LayoutsOne'
 import Home from './Pages/Home'
+import PinNote from './Pages/PinNote'
+import BinNote from './Pages/BinNote'
 
 
 
@@ -16,8 +18,11 @@ function App() {
       <Route>
         <Route path='/Regitar' element={<Registar/>}/>
         <Route path='/Login' element={<Login/>}/>
+
         <Route path='/' element={<LayoutsOne/>}>
           <Route index element={<Home/>}/>
+          <Route path='/PinNote' element={<PinNote/>}/>
+          <Route path='/BinNote' element={<BinNote/>}/>
         </Route>
       </Route>
     )
