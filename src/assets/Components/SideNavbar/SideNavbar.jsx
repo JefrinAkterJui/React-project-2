@@ -32,7 +32,7 @@ const SideNavbar = () => {
 
     return (
         <>
-            <nav className='Jui-Nav dark:bg-[#202124] '>
+            <nav className='Jui-Nav dark:bg-[#202124]'>
                 <div className="main_nav">
                     <div className="container">
                         <ul>

@@ -1,5 +1,6 @@
 .Jui-Navbar{
-    @apply py-0 bg-white shadow-[0px_1px_0px_0px_#dadce0] 
+    @apply py-3 bg-white shadow-[0px_1px_0px_0px_#dadce0] 
+    dark:shadow-lg
     
 }
 .userData{

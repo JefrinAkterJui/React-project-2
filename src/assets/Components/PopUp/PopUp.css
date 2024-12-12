@@ -1,0 +1,51 @@
+.popUp{
+    @apply flex justify-center items-center   transition-all duration-200 h-screen 
+    absolute top-0 right-0 bg-[#2021249a]
+}
+.PopCross{
+    @apply hover:bg-[#ffffff8a] w-[30px] h-[30px] rounded-[50%] top-16
+    right-10 absolute text-[20px] dark:text-[#2c2c2c] text-white hover:text-black text-center dark:hover:text-white
+    flex justify-center items-center transition-all duration-300
+}
+.inputFild{
+    @apply w-full md:w-[440px] h-[425px] bg-white rounded-xl p-[25px] 
+}
+.inputFild h2{
+    @apply font-Albart text-[20px] text-[#0000009c] mb-4
+}
+.inputFild input{
+    @apply w-full h-[40px] outline-none border-[1px] 
+    border-[#00000025] rounded-lg bg-[#fff9c442] text-black pl-3
+    font-Popins text-[18px]
+}
+.Note{
+    @apply mt-3
+}
+.Notetext{
+    @apply w-full h-[200px] outline-none  border-[#0000009c] rounded-lg bg-[#fff9c442] text-black pl-3 pt-2 overflow-hidden
+    font-Popins text-[16px]
+}
+.colours{
+    @apply text-[22px] text-[#857070]  flex
+    relative text-center
+}
+.Color1{
+    @apply w-[18px] h-[18px] bg-red-600 rounded-[50%] 
+}
+.Color2{
+    @apply w-[18px] h-[18px] bg-[#A888B5] rounded-[50%]
+}
+.Color3{
+    @apply w-[18px] h-[18px] bg-[#0A97B0] rounded-[50%]
+}
+.platte{
+    @apply w-[20px] h-[20px] border-[1px] border-[#b1afaf] rounded-[50%]
+    text-center 
+    flex justify-center items-center cursor-pointer
+}
+.CustomColor{
+    @apply text-[#777676] text-[16px] cursor-pointer
+}
+.Main_colors{
+    @apply   absolute flex gap-2 transition-all duration-300
+}

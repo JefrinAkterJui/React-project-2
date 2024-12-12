@@ -1,9 +1,13 @@
 import React from 'react'
+import AddCard from '../assets/Components/AddCard/AddCard'
 
 const Home = () => {
   return (
     <>
-    <h1 className='text-3xl text-black font-Popins font-semibold flex justify-center mt-[160px] ml-[200px] dark:text-white'>This is home/All Note page</h1>
+    <div className='p-7 w-full dark:bg-[#202124]'>
+
+    <AddCard/>
+    </div>
     </>
   )
 }

@@ -14,9 +14,6 @@ export default {
       Popins:[ "Poppins", "sans-serif"] ,
       Albart:[ "Albert Sans", "sans-serif"]
     },
-    boxShadow: {
-      'hum': ['0px 2px 0px #fff'],
-    },
   },
   plugins: [],
 }

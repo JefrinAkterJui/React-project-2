@@ -1,0 +1,11 @@
+.Jui-card{
+    @apply w-[250px] h-[250px] rounded-lg border-[1px]
+    border-[#202124] text-[#202124] text-[40px] 
+    font-Albart font-semibold dark:text-[#fff]
+    flex flex-col justify-center items-center 
+    shadow-[-3px_1px_5px_0px_#000]
+    cursor-pointer
+}
+.Add{
+    @apply font-Popins text-[18px]  mt-[7px] text-center
+}

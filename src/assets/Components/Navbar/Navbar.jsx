@@ -24,15 +24,15 @@ const Navbar = () => {
 
   return (
     <>
-    <nav className='Jui-Navbar dark:bg-[#202124] dark:shadow-hum'>
+    <nav className='Jui-Navbar dark:bg-[#202124]'>
         <div className="container">
                 <div className="userData">
                     <div className="logom">
                         <div className="Three_lines dark:text-white ">
                             <IoReorderThreeOutline className='Line'/>
                         </div>
-                        <div className="NoteLogo">
-                            <img src="imge/logo.png" alt="imge" />
+                        <div className="NoteLogo ">
+                            <img className='w-[103px] h-[37px]' src="imge/logo.png" alt="imge" />
                         </div>
                     </div>
                     <div className="ProfileData">
