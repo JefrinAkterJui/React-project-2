@@ -8,10 +8,10 @@
     flex justify-center items-center transition-all duration-300
 }
 .inputFild{
-    @apply w-full md:w-[440px] h-[425px] bg-white rounded-xl p-[25px] 
+    @apply w-full md:w-[440px] h-[425px] bg-white rounded-xl p-[25px] overflow-hidden 
 }
 .inputFild h2{
-    @apply font-Albart text-[20px] text-[#0000009c] mb-4
+    @apply font-Albart text-[20px] text-[#0000009c] mb-2
 }
 .inputFild input{
     @apply w-full h-[40px] outline-none border-[1px] 

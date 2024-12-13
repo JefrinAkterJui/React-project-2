@@ -1,0 +1,13 @@
+.single_Note{
+    @apply w-[260px] h-[260px] rounded-[7px] p-[15px] border-[#000000bd]
+    bg-yellow-200 
+}
+.Note_title{
+    @apply text-[16px] text-[#000] font-Albart
+}
+.Notes{
+    @apply text-[14px] text-[#000000] font-Popins mt-3
+}
+.line{
+    @apply w-full h-[1px] bg-gray-400 mt-2
+}
