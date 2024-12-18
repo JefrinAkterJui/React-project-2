@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import './Singlenote.css'
 import { getDatabase, ref, onValue } from "firebase/database";
+import { useSelector } from 'react-redux';
 
 const Singlenote = ({}) => {
     // ----------------Redux data--------------------------------------
+    const SliceUser =useSelector((state)=>state.User.value)
 
 
     // ----------------curtom variables---------------------------------
@@ -15,13 +17,14 @@ const Singlenote = ({}) => {
         onValue(ref(db, 'AllNotes/'), (snapshot) => {
                 let arr =[]
                 snapshot.forEach((item)=>{
-                    arr.push(item.val())
+                    if(item.val().UserID==SliceUser.uid){
+                        arr.push({...item.val() ,key:item.key})
+                    }
                 })
                 setAllnotes(arr)
         });
     },[]);
     // ------------------function part----------------------------------
-
 
 
   return (
@@ -30,7 +33,7 @@ const Singlenote = ({}) => {
         {
             AllNotes.map((item)=>(
 
-                <div className="single_Note">
+                <div style={{background:item.Bgcolor}} className="single_Note">
                     <h2 className='Note_title'> {item.todoTitle}</h2>
                     <div className="line"></div>
                     <p className='Notes'>{item.todoNote}</p>

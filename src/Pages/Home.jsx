@@ -1,6 +1,7 @@
 import React from 'react'
 import AddCard from '../assets/Components/AddCard/AddCard'
 import Singlenote from '../assets/Components/SingleNote/Singlenote'
+import PinNote from '../assets/Components/PinNote/PinNote'
 
 const Home = () => {
   return (
@@ -10,7 +11,15 @@ const Home = () => {
       <AddCard/>
       {/* -------------- */}
       
-
+        <div>
+          <h2 className='font-Albart font-normal text-[20px]  text-black dark:text-white mb-4 mt-4'>Pin Notes</h2>
+          <hr />
+        </div>
+        <PinNote/>
+        <div>
+          <h2 className='font-Albart font-normal text-[20px]  text-black dark:text-white mb-4 mt-4'>All Notes</h2>
+          <hr />
+        </div>
         <Singlenote/>
       
     </div>

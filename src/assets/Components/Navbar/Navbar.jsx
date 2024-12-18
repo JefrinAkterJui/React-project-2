@@ -24,7 +24,7 @@ const Navbar = () => {
 
   return (
     <>
-    <nav className='Jui-Navbar dark:bg-[#202124]'>
+    <nav className='Jui-Navbar dark:bg-[#202124] dark:shadow-[0px_1px_0px_0px_#dadce0]'>
         <div className="container">
                 <div className="userData">
                     <div className="logom">
