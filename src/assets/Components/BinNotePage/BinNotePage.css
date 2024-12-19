@@ -1,0 +1,27 @@
+.single_BinNote{
+    @apply w-[200px] h-[200px] rounded-[7px] p-[15px] border-[#000000bd]
+    bg-white border-[1px]
+}
+.BinNote_title{
+    @apply text-[16px] text-[#000] font-Albart
+}
+.BinNotes{
+    @apply text-[14px] text-[#000000] font-Popins mt-3
+}
+.lines{
+    @apply w-full h-[1px] bg-gray-400 mt-2
+}
+/* ---------------------------------- */
+.Delateall_buttons{
+    @apply pt-[78px] pr-[45px] absolute top-0 right-0
+}
+.Delateall_buttons  button{
+    @apply flex items-center bg-[#FFDE59]  gap-1 px-4 py-2 cursor-pointer text-gray-800 font-semibold tracking-widest rounded-md hover:bg-[#ffd63098] duration-300 hover:gap-2 hover:translate-x-3
+}
+.second_button{
+    @apply mt-[90px] mr-[48px]
+}
+.second_button button{
+    @apply flex justify-center items-center gap-2 py-2 px-4 cursor-pointer rounded-md  text-black font-semibold bg-gradient-to-r from-[#ffde59ab] via-[#ffe713] to-[#f5b60b] hover:scale-105 duration-300 hover:from-[#f5ad12] hover:to-[#8a5a02]
+   mb-6
+}

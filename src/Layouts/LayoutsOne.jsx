@@ -18,7 +18,7 @@ const LayoutsOne = () => {
   return (
     <>
     <Navbar/>
-    <div className='flex '>
+    <div className='flex dark:bg-[#202124]'>
 
     <SideNavbar/>
     <Outlet/>

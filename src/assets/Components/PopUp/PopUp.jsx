@@ -41,9 +41,9 @@ const PopUp = ({showValue , PopCross}) => {
 
   return (
     <>
-    <div className={`${showValue? 'block' : 'hidden'} `}>
+    <div className={`${showValue? 'block' : 'hidden'}  `}>
 
-        <div className={`${showValue? 'w-full ' : 'w-0 ' } popUp `}>
+        <div className={`${showValue? 'w-full ' : 'w-0 ' } popUp z-40`}>
         
                 {/* --------------input fild--------------- */}
                 <div style={{background:color}} className={`${showValue? 'block' : 'hidden'} inputFild`} >

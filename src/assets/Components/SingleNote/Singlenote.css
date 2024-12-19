@@ -1,6 +1,6 @@
 .single_Note{
     @apply w-[200px] h-[200px] rounded-[7px] p-[15px] border-[#000000bd]
-    bg-yellow-200 border-[1px]
+    bg-white border-[1px]
 }
 .Note_title{
     @apply text-[16px] text-[#000] font-Albart
@@ -10,4 +10,15 @@
 }
 .line{
     @apply w-full h-[1px] bg-gray-400 mt-2
+}
+/* ---------------------------------- */
+.Note_F_text{
+    @apply py-2 bg-white px-1 rounded-sm flex
+    flex-col justify-start absolute top-full right-0 
+}
+.Note_F_text button{
+    @apply font-Popins font-normal text-[14px] text-black text-start duration-300
+}
+.Note_F_text button:hover{
+    @apply transform scale-[1.1] text-[#41331C]
 }
