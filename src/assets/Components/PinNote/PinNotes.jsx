@@ -39,10 +39,9 @@ const PinNotes = () => {
                         todoNote:RemovePinNote.todoNote,
                         Bgcolor:RemovePinNote.Bgcolor,
                         PinNote:RemovePinNote.PinNote,
-                        UserID:SliceUser.uid
+                        UserId:SliceUser.uid
                     });
                     remove(ref(db , 'AllNotes/' + RemovePinNote.key))
-                    console.log(RemovePinNote)
         }
 
   return (
