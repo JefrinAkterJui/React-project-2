@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './SideNavbar.css'
+import './Sidenavbar.css'
 import { NavLink } from 'react-router-dom'
 import { AiOutlineBulb } from "react-icons/ai";
 import { TiPinOutline } from "react-icons/ti";
