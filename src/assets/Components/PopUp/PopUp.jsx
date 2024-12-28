@@ -6,7 +6,7 @@ import { IoEyedrop } from "react-icons/io5";
 import { getDatabase, push, ref, set } from "firebase/database";
 import { useSelector } from 'react-redux';
 
-const PopUp = ({showValue , PopCross}) => {
+const PopUp = ({showValue , PopCross }) => {
     const [showColor , setshowColor]    =useState(false)
     const [tododata , setTododata]      =useState({todoTitle:'', todoNote:'', todotError:''})
     const [color , setcolor]            =useState('#fff')     
@@ -14,7 +14,6 @@ const PopUp = ({showValue , PopCross}) => {
     // --------------------rwdux data-----------------------------
     const SliceUser =useSelector((state)=>state.User.value)
     
-
     // ------------------firbase variabls--------------------
     const db = getDatabase();
     // -------------------------------All function part start---------------------------------

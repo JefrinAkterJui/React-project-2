@@ -38,15 +38,15 @@ const SideNavbar = () => {
                         <ul>
                             <li className='NavOne'>
                                 <NavLink
-                                to="/"
-                                className={({ isActive }) =>[isActive ? "ActivePage" : "NotActivePage", ].join(" ")}
+                                    to="/"
+                                    className={({ isActive }) =>[isActive ? "ActivePage" : "NotActivePage", ].join(" ")}
                                     >
                                     <AiOutlineBulb className='icon1'/>
                                     Notes
                                 </NavLink>
                                 <NavLink
-                                to="/PinNote"
-                                className={({ isActive }) =>[isActive ? "ActivePage" : "NotActivePage", ].join(" ")}
+                                    to="/PinNote"
+                                    className={({ isActive }) =>[isActive ? "ActivePage" : "NotActivePage", ].join(" ")}
                                     >
                                     <TiPinOutline className='icon1'/>
                                     Pin Notes

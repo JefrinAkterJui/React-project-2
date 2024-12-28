@@ -14,7 +14,7 @@ const AddCard = () => {
             <IoMdAddCircle />
             <p className='Add'>Add</p>
         </div>
-         <PopUp showValue={show} PopCross={()=>setShow(false)}/>
+         <PopUp showValue={show}  PopCross={()=>setShow(false)}/>
     </>
   )
 }
