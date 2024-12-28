@@ -1,7 +1,7 @@
 
 .popUp{
-    @apply flex justify-center items-center   transition-all duration-200 h-screen 
-    absolute top-0 right-0 bg-[#2021249a] w-full 
+    @apply flex justify-center items-center   transition-all duration-200 h-screen
+     top-0 right-0 bg-[#a3a3a39a] w-full fixed
 }
 .inputFild{
     @apply w-full md:w-[440px] h-[425px] bg-white rounded-xl p-[25px] overflow-hidden 

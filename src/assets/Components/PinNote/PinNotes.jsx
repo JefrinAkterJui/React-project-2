@@ -19,7 +19,7 @@ const PinNotes = () => {
           onValue(ref(db, 'AllNotes/'), (snapshot) => {
                   let arr =[]
                   snapshot.forEach((item)=>{
-                      if(item.val().UserID == SliceUser.uid && item.val().PinNote==true){
+                      if(item.val().UserId == SliceUser.uid && item.val().PinNote==true){
                           arr.push({...item.val() ,key:item.key})
                       }
                   })

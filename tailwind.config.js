@@ -15,5 +15,7 @@ export default {
       Albart:[ "Albert Sans", "sans-serif"]
     },
   },
-  plugins: [],
+  plugins: [ 
+    // require('@tailwindcss/line-clamp'),
+  ],
 }

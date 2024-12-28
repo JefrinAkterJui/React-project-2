@@ -4,6 +4,7 @@ import { getDatabase, ref, onValue, update, remove, set, push } from "firebase/d
 import { useSelector } from 'react-redux';
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import PinNotes from '../PinNote/PinNotes';
+import PopUp from '../PopUp/PopUp';
 
 const Singlenote = ({}) => {
     // ----------------Redux data--------------------------------------
@@ -13,6 +14,9 @@ const Singlenote = ({}) => {
     const [AllNotes , setAllnotes]          =useState([])
     const [ShowOptions ,setShowoptionOption]=useState(false)
     const [UnicCard , setUnicCard]          =useState('')
+    const [showpopUp , setshowPopup]        =useState(false)
+    const [editData , seteditData]          =useState("")
+
     // ----------------------firbase variables--------------------------
     const db = getDatabase();
     // ---------------------real tiome database data--------------------
@@ -20,7 +24,7 @@ const Singlenote = ({}) => {
         onValue(ref(db, 'AllNotes/'), (snapshot) => {
                 let arr =[]
                 snapshot.forEach((item)=>{
-                    if(item.val().UserID==SliceUser.uid){
+                    if(item.val().UserId==SliceUser.uid){
                         arr.push({...item.val() ,key:item.key})
                     }
                 })
@@ -37,7 +41,7 @@ const Singlenote = ({}) => {
     }
             // -----------------Remove function-------------
     const hendelRemove =(removeData)=>{
-        set(push(ref(db, 'BinNotes/')),{
+        set(ref(db, 'BinNotes/' + removeData.key),{
             todoTitle:removeData.todoTitle,
             todoNote:removeData.todoNote,
             Bgcolor:removeData.Bgcolor,
@@ -47,7 +51,6 @@ const Singlenote = ({}) => {
         // ------------delate data--------------------------
         remove(ref(db,'AllNotes/' + removeData.key))
     }
-
 
   return (
     <>
@@ -62,7 +65,7 @@ const Singlenote = ({}) => {
                             ShowOptions&& UnicCard.key==item.key&&
                             <div className="Note_F_text">
                                 <button onClick={()=>hendelPin(item)}>Pin</button>
-                                <button>Edit</button>
+                                <button onClick={()=>{setshowPopup(true) , seteditData(item)}}>Edit</button>
                                 <button onClick={()=>hendelRemove(item) }>Remove</button>
                             </div>
                         }
@@ -74,6 +77,7 @@ const Singlenote = ({}) => {
             ))
         }
     </div>
+    <PopUp showValue={showpopUp} PopCross={()=>setshowPopup(false)} editDataValue={editData}/>
     </>
   )
 }

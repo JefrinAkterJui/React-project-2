@@ -1,15 +1,16 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { RxCross2 } from "react-icons/rx";
 import './PopUp.css'
 import { IoColorPaletteSharp } from "react-icons/io5";
 import { IoEyedrop } from "react-icons/io5";
-import { getDatabase, push, ref, set } from "firebase/database";
+import { getDatabase, push, ref, set, update } from "firebase/database";
 import { useSelector } from 'react-redux';
 
-const PopUp = ({showValue , PopCross }) => {
+const PopUp = ({showValue , PopCross, editDataValue }) => {
     const [showColor , setshowColor]    =useState(false)
     const [tododata , setTododata]      =useState({todoTitle:'', todoNote:'', todotError:''})
-    const [color , setcolor]            =useState('#fff')     
+    const [color , setcolor]            =useState('#fff')    
+
 
     // --------------------rwdux data-----------------------------
     const SliceUser =useSelector((state)=>state.User.value)
@@ -31,29 +32,53 @@ const PopUp = ({showValue , PopCross }) => {
                 todoNote:tododata.todoNote,
                 Bgcolor:color,
                 PinNote:false,
-                UserID:SliceUser.uid
+                UserId:SliceUser.uid
             });
             PopCross()
             setTododata((prev)=>({...prev ,todoTitle:'', todoNote:'', todotError:''}))
         }
     }
+    useEffect(()=>{
+        if(editDataValue){
+            setTododata((prev)=>({...prev,
+                todoTitle:editDataValue.todoTitle,
+                todoNote:editDataValue.todoNote,
+
+            }))
+            setcolor(editDataValue.Bgcolor)
+        }
+    },[editDataValue])
+    // ------------------update notes function------------------
+    const hendelUpdate =()=>{
+        update(ref(db, 'AllNotes/' + editDataValue.key),{
+            Bgcolor:color,
+            UserID:SliceUser.uid,
+            PinNote:editDataValue.PinNote,
+            todoNote:tododata.todoNote,
+            todoTitle:tododata.todoTitle
+
+        })
+        PopCross()
+    }
+
+
 
   return (
     <>
-    <div className={`${showValue? 'block' : 'hidden'}  `}>
+    <div className={`${showValue? 'block' : 'hidden'} `}>
 
-        <div className={`${showValue? 'w-full ' : 'w-0 ' } popUp z-40`}>
+        <div className={`${showValue? 'w-full ' : 'w-0 ' } popUp z-[2333]`}>
         
                 {/* --------------input fild--------------- */}
                 <div style={{background:color}} className={`${showValue? 'block' : 'hidden'} inputFild`} >
                     <p className='text-[12px] text-red-600 '>{tododata.todotError}</p>
                     <div className="first_text flex justify-between">
                         <h2>Title</h2>
-                        <button onClick={PopCross} className='PopCross'>
+                        <button onClick={PopCross} className={` PopCross`} >
                             <RxCross2 />
                         </button>
                     </div>
-                    <input value={tododata.todoTitle} onChange={(e)=>setTododata((prev)=>({...prev , todoTitle:e.target.value}))} type="text" placeholder='Title...' /> 
+                    <input value={ tododata.todoTitle} onChange={(e)=>setTododata((prev)=>({...prev , todoTitle:e.target.value}))} type="text" placeholder='Title...' /> 
                     <h2 className='Note'>Note</h2>
                     <textarea value={tododata.todoNote} onChange={(e)=>setTododata((prev)=>({...prev , todoNote:e.target.value}))} className='Notetext' type="text" placeholder='Note......' />
                     {/* -------------------------colors--------------------------------- */}
@@ -73,11 +98,20 @@ const PopUp = ({showValue , PopCross }) => {
                             </div>
                         </div>
                     <div className="Inputs_button"> 
-                        <button onClick={hendeltodo}
-                        className="px-3 z-30 py-1 bg-[#fbde5b7c] rounded-md text-black relative font-semibold after:-z-20 after:absolute after:h-1 after:w-1 after:bg-rose-800 after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:hover:scale-[300] after:hover:transition-all after:hover:duration-700 after:transition-all after:duration-700 transition-all duration-700 [text-shadow:3px_5px_2px_#be123c;] hover:[text-shadow:2px_2px_2px_#fda4af] text-[16px]"
-                        >
-                        Save
-                        </button>
+                        {
+                            editDataValue?
+                            <button onClick={hendelUpdate}
+                            className="px-3 z-30 py-1 bg-[#fbde5b7c] rounded-md text-black relative font-semibold after:-z-20 after:absolute after:h-1 after:w-1 after:bg-rose-800 after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:hover:scale-[300] after:hover:transition-all after:hover:duration-700 after:transition-all after:duration-700 transition-all duration-700 [text-shadow:3px_5px_2px_#be123c;] hover:[text-shadow:2px_2px_2px_#fda4af] text-[16px]"
+                            >
+                            Update
+                            </button>
+                            :
+                            <button onClick={hendeltodo}
+                            className="px-3 z-30 py-1 bg-[#fbde5b7c] rounded-md text-black relative font-semibold after:-z-20 after:absolute after:h-1 after:w-1 after:bg-rose-800 after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:hover:scale-[300] after:hover:transition-all after:hover:duration-700 after:transition-all after:duration-700 transition-all duration-700 [text-shadow:3px_5px_2px_#be123c;] hover:[text-shadow:2px_2px_2px_#fda4af] text-[16px]"
+                            >
+                            Save
+                            </button>
+                        }
                     </div>
                     </div>
                 </div>

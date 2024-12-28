@@ -31,7 +31,19 @@ const BinNotePage = () => {
     }
         // -------------all delete function------------
     const AllDelete =()=>{
-        remove(ref(db , 'BinNotes/'))
+        let array=[]
+        onValue(ref(db, 'BinNotes/') , (snapshot)=>{
+            snapshot.forEach((item)=>{
+                array.push({...item.val(), key:item.key})
+            });
+            for(const Note of array){
+                if (Note.UserId==SliceUser.uid){
+                    remove(ref(db, 'BinNotes/' + Note.key))
+                }
+            }
+
+        })
+        // remove(ref(db , 'BinNotes/'))
     }
     // ------------------recover data function-------------
     const Recover =(recoverData)=>{
@@ -40,13 +52,11 @@ const BinNotePage = () => {
             todoNote:recoverData.todoNote,
             Bgcolor:recoverData.Bgcolor,
             PinNote:recoverData.PinNote,
-            UserID:SliceUser.uid
+            UserId:SliceUser.uid
             
         });
         remove(ref(db , 'BinNotes/' + recoverData.key))
     }
-
-
 
 
   return (

@@ -1,12 +1,12 @@
 .single_Note{
-    @apply w-[200px] h-[200px] rounded-[7px] p-[15px] border-[#000000bd]
-    bg-white border-[1px]
+    @apply w-[200px] max-h-[200px] rounded-[7px] p-[15px] border-[#000000bd]
+    bg-white border-[1px] 
 }
 .Note_title{
     @apply text-[16px] text-[#000] font-Albart
 }
 .Notes{
-    @apply text-[14px] text-[#000000] font-Popins mt-3
+    @apply text-[14px] text-[#000000] font-Popins mt-3 break-words
 }
 .line{
     @apply w-full h-[1px] bg-gray-400 mt-2
