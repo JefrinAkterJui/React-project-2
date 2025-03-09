@@ -11,21 +11,15 @@ import { userData } from '../../../Slice/userSlice'
 const Login = () => {
   // -----------------use state part------------------------------
   const [show, setshow] = useState(false)
-  const [fromdta, setFromdata] = useState({
-    email: '',
-    password: ''
-  })
-  const [error, setError] = useState({
-    emailError: '',
-    passwordError: ''
-  })
+  const [fromdta, setFromdata] = useState({email: '', password: ''})
+  const [error, setError] = useState({emailError: '', passwordError: ''})
 
   // ---------------------Navigate----------------------------------
-  const navigate=useNavigate()
+  const navigate = useNavigate()
   // -----------------firbase variables-----------------------------
   const auth = getAuth()
   // -------------------Store the user data variable---------------------
-  const Dispatch=useDispatch()
+  const Dispatch = useDispatch()
 
   const Hregister = () => {
     if (fromdta.email == '') {
@@ -37,53 +31,53 @@ const Login = () => {
       signInWithEmailAndPassword(auth, fromdta.email, fromdta.password)
         .then((userCredential) => {
           const user = userCredential.user
-          if(user.emailVerified==true){
+          if (user.emailVerified == true) {
             // --------------------Navigate to the home page-------------------------
             navigate('/')
             // ----------------------Login success tost--------------------------------
             toast.success('Login success', {
-              position: "top-right",
+              position: 'top-right',
               autoClose: 500,
               hideProgressBar: false,
               closeOnClick: true,
               pauseOnHover: true,
               draggable: true,
               progress: undefined,
-              theme: "dark",
-              transition: Bounce,
-              });
-              // --------------------store the userDtata-----------------------
-              Dispatch(userData(user))
-              localStorage.setItem('currentuser', JSON.stringify(user))
-          }else{
+              theme: 'dark',
+              transition: Bounce
+            })
+            // --------------------store the userDtata-----------------------
+            Dispatch(userData(user))
+            localStorage.setItem('currentuser', JSON.stringify(user))
+          } else {
             toast.error('Email is not varify', {
-              position: "top-right",
+              position: 'top-right',
               autoClose: 500,
               hideProgressBar: false,
               closeOnClick: true,
               pauseOnHover: true,
               draggable: true,
               progress: undefined,
-              theme: "dark",
-              transition: Bounce,
-              });
+              theme: 'dark',
+              transition: Bounce
+            })
           }
         })
         .catch((error) => {
           const errorCode = error.code
-          if(errorCode){
+          if (errorCode) {
             // -----------error tost-----------------
             toast.error(' Something went wrong', {
-              position: "top-right",
+              position: 'top-right',
               autoClose: 500,
               hideProgressBar: false,
               closeOnClick: true,
               pauseOnHover: true,
               draggable: true,
               progress: undefined,
-              theme: "dark",
-              transition: Bounce,
-              });
+              theme: 'dark',
+              transition: Bounce
+            })
           }
         })
     }
@@ -91,8 +85,8 @@ const Login = () => {
 
   return (
     <>
-      <div className="Jui_From flex justify-center items-center w-[174%] h-[100vh]">
-        <div className="container">
+      <div className="Jui_From flex justify-center items-center w-[100%] h-[100vh]">
+        <div className="container flex justify-center items-center">
           <div className="w-80 rounded-lg shadow h-auto p-6 bg-white relative overflow-hidden">
             <div className="flex flex-col justify-center items-center space-y-2">
               <h2 className="text-2xl font-medium text-slate-700">
@@ -162,8 +156,9 @@ const Login = () => {
                   <input className="mr-2 w-4 h-4" type="checkbox" />
                   <span className="text-slate-500">Remember me </span>
                 </div>
-                <Link className="text-blue-500 font-medium hover:underline" 
-                  >Forgot Password</Link>
+                <Link className="text-blue-500 font-medium hover:underline">
+                  Forgot Password
+                </Link>
               </div>
               <button
                 className="w-full justify-center py-1 bg-blue-500 hover:bg-blue-600 outline-none border-none rounded-md text-white duration-500"

@@ -14,16 +14,8 @@ import { Bounce, toast } from 'react-toastify'
 const Registar = () => {
   // -----------------use state part------------------------------
   const [show, setshow] = useState(false)
-  const [fromdta, setFromdata] = useState({
-    username: '',
-    email: '',
-    password: ''
-  })
-  const [error, setError] = useState({
-    usernameError: '',
-    emailError: '',
-    passwordError: ''
-  })
+  const [fromdta, setFromdata] = useState({ username: '',email: '',password: ''})
+  const [error, setError] = useState({usernameError: '', emailError: '',passwordError: '' })
   // ----------------------------Navigate--------------------------------
   const Navigate = useNavigate()
 
@@ -45,7 +37,7 @@ const Registar = () => {
       createUserWithEmailAndPassword(auth, fromdta.email, fromdta.password)
         .then((userCredential) => {
           const user = userCredential.user
-          console.log(user)
+          // console.log(user)
           // ---------------- add user photo and Nmae---------------
           updateProfile(auth.currentUser, {
             displayName: fromdta.username,
@@ -76,7 +68,6 @@ const Registar = () => {
         })
         .catch((error) => {
           const errorCode = error.code
-          const errorMessage = error.message
           if (errorCode == 'auth/email-already-in-use') {
             // -----------error tost------------
             toast.error(' Email has already taken', {
@@ -110,8 +101,8 @@ const Registar = () => {
 
   return (
     <>
-      <div className="Jui_From w-[174%] h-[100vh] flex justify-center items-center">
-        <div className="container">
+      <div className="Jui_From w-[100%] h-[100vh] flex justify-center items-center">
+        <div className="container flex justify-center items-center">
           <div className="w-80 rounded-lg shadow h-auto p-6 bg-white relative overflow-hidden">
             <div className="flex flex-col justify-center items-center space-y-2">
               <h2 className="text-2xl font-medium text-slate-700">
@@ -129,13 +120,7 @@ const Registar = () => {
                   className="outline-none border-2 rounded-md px-2 py-1 text-slate-500 w-full focus:border-blue-300"
                   placeholder="Username"
                   type="text"
-                  onChange={(e) => {
-                    setFromdata((hum) => ({
-                      ...hum,
-                      username: e.target.value
-                    })),
-                      setError((hum) => ({ ...hum, usernameError: '' }))
-                  }}
+                  onChange={(e) => {setFromdata((hum) => ({ ...hum, username: e.target.value})),setError((hum) => ({ ...hum, usernameError: '' }))}}
                 />
               </div>
               {/* ---------------------------------------------------------user mail--------------------------------------------------------- */}
@@ -148,9 +133,7 @@ const Registar = () => {
                   placeholder="User Email"
                   type="email"
                   onChange={(e) => {
-                    setFromdata((go) => ({ ...go, email: e.target.value })),
-                      setError((hum) => ({ ...hum, emailError: '' }))
-                  }}
+                    setFromdata((go) => ({ ...go, email: e.target.value })), setError((hum) => ({ ...hum, emailError: '' }))}}
                 />
               </div>
               {/* -------------user pass----------- */}
@@ -163,13 +146,7 @@ const Registar = () => {
                     className="outline-none border-2 rounded-md px-2 py-1 text-slate-500 w-full focus:border-blue-300"
                     placeholder="Password"
                     type={show ? 'text' : 'password'}
-                    onChange={(e) => {
-                      setFromdata((go) => ({
-                        ...go,
-                        password: e.target.value
-                      })),
-                        setError((hum) => ({ ...hum, passwordError: ' ' }))
-                    }}
+                    onChange={(e) => { setFromdata((go) => ({ ...go,password: e.target.value})),setError((hum) => ({ ...hum, passwordError: ' ' }))}}
                   />
                   {show ? (
                     <FaEye

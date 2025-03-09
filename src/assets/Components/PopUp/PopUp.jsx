@@ -38,12 +38,12 @@ const PopUp = ({showValue , PopCross, editDataValue }) => {
             setTododata((prev)=>({...prev ,todoTitle:'', todoNote:'', todotError:''}))
         }
     }
+    // ---------------Realtime database for edit function----------------
     useEffect(()=>{
         if(editDataValue){
             setTododata((prev)=>({...prev,
                 todoTitle:editDataValue.todoTitle,
                 todoNote:editDataValue.todoNote,
-
             }))
             setcolor(editDataValue.Bgcolor)
         }
